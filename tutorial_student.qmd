@@ -6,69 +6,139 @@
 
 By the end of this tutorial, you should be able to:
 
-- COMPLETE THIS
-- WITH MULTIPLE BULLETS
+- Explain what **Quarto** is and why analysts use it
+- Run R code inside a `.qmd` file and **render** a report
+- Load a small dataset and compute a few **inventory KPIs**
+- Produce a simple table and a basic plot
+- Write a manager-friendly recommendation that separates **facts vs interpretation vs decision**
 :::
 
 ## The Business Challenge
 
-Explain the Business Challenge and set up in this file
+David Jones sells a wide range of seasonal products, including fashion items that see strong swings in demand around holidays like Christmas.
+
+Inventory decisions are especially challenging for seasonal products because:
+
+- Demand can spike unpredictably
+- Promotions and discounts influence customer behaviour
+- Regional preferences can differ
+- Suppliers need advance notice to adjust deliveries
+
+Right now, David Jones is using a fixed restocking rule:
+
+> Every week, **100 units** are delivered to each region, no matter what.
+
+But with the holiday season approaching, this rigid approach might not be enough.
+
+**Management wants a one-page briefing outlining whether they should adapt their restocking rule.**
+
+Your task is to review last year's data and advise David Jones on how to improve inventory decisions.
 
 ## Prepare these Exercises before Class 
 
-Prepare these exercises before coming to class. Plan to spend 30 minutes on these exercises.
+Prepare these exercises before coming to class. Plan to spend 45 minutes on these exercises.
 
-### Exercise 1: Title
+### Exercise 1: Approaches to Inventory Planning 
 
-This is the text for the question, with its accompanying code 
+Read the article, "[A New Approach to Production and Inventory Planning](https://hbr.org/2023/09/a-new-approach-to-production-and-inventory-planning)," and answer the following questions in  2–3 sentences:
 
-```{r}
-# Example code for the question
-1 + 1
-```
+(a) Define the term "inventory management". What makes inventory management complicated for seasonal products?
+(b) What is one key challenge businesses face in managing inventory today?
+(c) How could this apply to a retailer like David Jones, especially during busy seasons like Christmas?
+
+*Write your answer here*
+
+### Exercise 2: A First Peek at Some Data
+
+David Jones now wants to use **last year's data** to improve inventory decisions for the upcoming holiday season.
+
+The data you have to work from are provided below:
+
+| Week Commencing | Region    | Starting Inventory | Units Delivered | Units Sold | Ending Inventory | Price (AUD) | Promotion (Y/N) |
+|-----------------|-----------|------------------|----------------|------------|-----------------|-------------|----------------|
+| 25 Nov          | Sydney    | 500              | 100            | 100        | 500             | 50          | N              |
+| 25 Nov          | Melbourne | 500              | 100            | 150        | 450             | 50          | N              |
+| 2 Dec           | Sydney    | 500              | 100            | 180        | 420             | 45          | Y              |
+| 2 Dec           | Melbourne | 450              | 100            | 220        | 330             | 45          | Y              |
+| 9 Dec           | Sydney    | 420              | 100            | 150        | 370             | 45          | Y              |
+| 9 Dec           | Melbourne | 330              | 100            | 100        | 330             | 45          | Y              |
+| 16 Dec          | Sydney    | 370              | 100            | 400        | 70              | 40          | Y (Christmas)  |
+| 16 Dec          | Melbourne | 330              | 100            | 400        | 30              | 40          | Y (Christmas)  |
+| 23 Dec          | Sydney    | 70               | 100            | 120        | 50              | 50          | N              |
+| 23 Dec          | Melbourne | 30               | 100            | 150        | -20 (backorder) | 50          | N              |
+
+Before analysts run any code, they ask a simple question:
+
+> **Can we trust this dataset enough to make a decision?**
+
+Look at the David Jones data above and answer the questions below.
+
+**(a)** Identify **5 potential issues** in the table. For each issue, classify it as:
+
+* **1. Will break analysis/code**: formatting and/or type problems 
+* **2. Unclear meaning**: we need a formal definition from the business
+* **3. Decision risk**: could bias conclusions or lead to a bad recommendation
+
+Fill in this template:
+
+| Issue you noticed | Category (1/2/3) | Why it matters (1 sentence) |
+| ----------------- | ---------------- | --------------------------- |
+|                   |                  |                             |
+|                   |                  |                             |
+|                   |                  |                             |
+|                   |                  |                             |
+|                   |                  |                             |
+|                   |                  |                             |
+
+**(b)** Write one question you would email to the data owner today that would most improve your confidence in using the data to make a recommendation.
+
+*Write your answer here*
+
+### Exercise 3: Getting Set Up in Posit Cloud
+
+Before we proceed, we need everyone working in the same environment. Complete the following steps:
+
+**Step 1**: Log in to Posit Cloud
+
+* Go to the Posit Cloud workspace link provided on the LMS.
+* Log in using your University account.
+
+**Step 2**: Make your own copy of the workshop project
+
+- Locate the workshop project in Posit Cloud.
+- Click Make a Copy to create your own version.
+
+**Step 3**: Open the Quarto file
+
+- In the Files pane, locate the workshop Quarto document: `tutorial_02_inventory.qmd`.
+- Click it to open it in the editor.
+
+**Step 4**: Render the document
+
+* Find the Render button (top of the editor).
+* Click Render.
+
+If everything is set up correctly, a new tab should appear in your browser with the rendered content.
 
 ```{r}
 # Write your answer here
 ```
 
-### Exercise 2: Title
+### Exercise 4: R + Quarto Vocabulary Check (5 Quick Definitions)
 
-This is the text for the question, with its accompanying code 
+Answer each in **one short sentence**.
 
-```{r}
-# Example code for the question
-1 + 1
-```
+**(a)** What does `<-` do in R?
 
-```{r}
-# Write your answer here
-```
+**(b)** What is a **data frame** (and what does a row represent in our David Jones data)?
 
-### Exercise 3: Title
+**(c)** What is a **function** in R? Give one example.
 
-This is the text for the question, with its accompanying code 
+**(d)** What is a **code chunk** in a Quarto `.qmd` file?
 
-```{r}
-# Example code for the question
-1 + 1
-```
+**(e)** What does **Render** do in Quarto?
 
-```{r}
-# Write your answer here
-```
-
-### Exercise 4: Title
-
-This is the text for the question, with its accompanying code 
-
-```{r}
-# Example code for the question
-1 + 1
-```
-
-```{r}
-# Write your answer here
-```
+*Write your answer here*
 
 ### Exercise 5: Title
 

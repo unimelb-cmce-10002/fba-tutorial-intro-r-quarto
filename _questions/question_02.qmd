@@ -1,12 +1,51 @@
 <!-- question-type: prepare -->
-### Exercise 2: Title
+### Exercise 2: A First Peek at Some Data
 
-This is the text for the question, with its accompanying code 
+David Jones now wants to use **last year's data** to improve inventory decisions for the upcoming holiday season.
 
-```{r}
-# Example code for the question
-1 + 1
-```
+The data you have to work from are provided below:
+
+
+| Week Commencing | Region    | Starting Inventory | Units Delivered | Units Sold | Ending Inventory | Price (AUD) | Promotion (Y/N) |
+|-----------------|-----------|------------------|----------------|------------|-----------------|-------------|----------------|
+| 25 Nov          | Sydney    | 500              | 100            | 100        | 500             | 50          | N              |
+| 25 Nov          | Melbourne | 500              | 100            | 150        | 450             | 50          | N              |
+| 2 Dec           | Sydney    | 500              | 100            | 180        | 420             | 45          | Y              |
+| 2 Dec           | Melbourne | 450              | 100            | 220        | 330             | 45          | Y              |
+| 9 Dec           | Sydney    | 420              | 100            | 150        | 370             | 45          | Y              |
+| 9 Dec           | Melbourne | 330              | 100            | 100        | 330             | 45          | Y              |
+| 16 Dec          | Sydney    | 370              | 100            | 400        | 70              | 40          | Y (Christmas)  |
+| 16 Dec          | Melbourne | 330              | 100            | 400        | 30              | 40          | Y (Christmas)  |
+| 23 Dec          | Sydney    | 70               | 100            | 120        | 50              | 50          | N              |
+| 23 Dec          | Melbourne | 30               | 100            | 150        | -20 (backorder) | 50          | N              |
+
+
+Before analysts run any code, they ask a simple question:
+
+> **Can we trust this dataset enough to make a decision?**
+
+Look at the David Jones data above and answer the questions below.
+
+**(a)** Identify **5 potential issues** in the table. For each issue, classify it as:
+
+* **1. Will break analysis/code**: formatting and/or type problems 
+* **2. Unclear meaning**: we need a formal definition from the business
+* **3. Decision risk**: could bias conclusions or lead to a bad recommendation
+
+Fill in this template:
+
+| Issue you noticed | Category (1/2/3) | Why it matters (1 sentence) |
+| ----------------- | ---------------- | --------------------------- |
+|                   |                  |                             |
+|                   |                  |                             |
+|                   |                  |                             |
+|                   |                  |                             |
+|                   |                  |                             |
+|                   |                  |                             |
+
+**(b)** Write one question you would email to the data owner today that would most improve your confidence in using the data to make a recommendation.
+
+
 
 <!-- BEGIN PROFILE:r-teaching-guide -->
 ::: {.content-visible when-profile="r-teaching-guide"}
@@ -22,8 +61,7 @@ Teaching Note
 🎯 **Learning Objective** 
 Students should:
 
-- XXXXX
-
+Help students internalise a core analyst habit: before you compute anything, check whether the data is trustworthy and well-defined enough to support a decision. Students should leave with (i) a concrete sense of “data issues,” (ii) vocabulary for rows/columns/types, and (iii) practice distinguishing code-breaking vs meaning vs decision-risk problems.
 ✅   **Core Concepts to Highlight**
 
 List them here
@@ -31,11 +69,23 @@ List them here
 
 💬 **Suggested In-Class Prompts** (if needed)
 
-List as needed
+
+NA - prep exercise
 
 📌 **Common Misunderstandings**
 
-List as needed
+Students list vague issues (“data is messy”) without pointing to a specific column/value.
+
+- Nudge: “Show me the cell/column that creates the problem.”
+
+They treat all issues as ‘code’ issues.
+
+- Reframe: “Some issues won’t crash R—but can still crash your recommendation.”
+
+They assume negative inventory is impossible.
+
+- Clarify: negative can be a legitimate encoding of backorders, but it must be defined and stored numerically.
+
 
 :::
 
@@ -55,11 +105,31 @@ Solution
 
 ::: {.solution-block-body}
 
-Here’s the explanation and code:
+**(a)**
 
-```{r}
-print("Hello, world!")
-```
+| Issue you noticed | Category (1/2/3) | Why it matters (1 sentence) |
+|---|---:|---|
+| `Week Commencing` has no year (e.g., “25 Nov”) | 2 | Without a year it’s ambiguous and hard to join to other data or compare across seasons. |
+| `Week Commencing` is text, not a real date | 1 | R will treat it as character unless we parse it, which breaks sorting/plotting over time. |
+| Column name `Price (AUD)` contains spaces + parentheses | 1 | Students will make coding mistakes; it’s harder to reference consistently. |
+| `Promotion (Y/N)` mixes values like `Y` and `Y (Christmas)` | 1 | Mixed formats make the column messy to analyse and easy to misclassify. |
+| `Ending Inventory` includes `-20 (backorder)` (number + text) | 1 | The column won’t import as numeric, so basic calculations (min, comparisons) will fail. |
+| Meaning of negative ending inventory is unclear | 2 | Does `-20` mean unmet demand, orders placed, or an accounting adjustment? Interpretation changes recommendations. |
+| Timing is unclear: do deliveries arrive before sales or after sales? | 2 | Inventory dynamics change completely depending on timing, affecting “stockout” interpretation. |
+| `Units Sold` may be constrained by inventory (stockouts) | 3 | Observed sales may understate true demand, so forecasting from sales alone can mislead. |
+| Price changes coincide with promotion changes | 3 | Does the price include the promotion?. |
+
+**(b)**
+Pick one of these:
+
+Timing (highest value):
+“Do deliveries occur before sales for that week (available to sell immediately), or after sales (arrive at end of week)?”
+
+Backorder definition:
+“When Ending Inventory is negative (e.g., -20), does that represent unmet demand/backorders, and if so how is it recorded and fulfilled?”
+
+Promotion definition:
+“What exactly counts as a Promotion = Y here—does it mean a discount, an in-store campaign, online promotion, or something else—and is Y (Christmas) a different type or intensity?”
 :::
 
 :::

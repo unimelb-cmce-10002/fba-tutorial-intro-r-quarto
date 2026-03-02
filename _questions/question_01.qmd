@@ -1,12 +1,11 @@
 <!-- question-type: prepare -->
-### Exercise 1: Title
+### Exercise 1: Approaches to Inventory Planning 
 
-This is the text for the question, with its accompanying code 
+Read the article, "[A New Approach to Production and Inventory Planning](https://hbr.org/2023/09/a-new-approach-to-production-and-inventory-planning)," and answer the following questions in  2–3 sentences:
 
-```{r}
-# Example code for the question
-1 + 1
-```
+(a) Define the term "inventory management". What makes inventory management complicated for seasonal products?
+(b) What is one key challenge businesses face in managing inventory today?
+(c) How could this apply to a retailer like David Jones, especially during busy seasons like Christmas?
 
 <!-- BEGIN PROFILE:r-teaching-guide -->
 ::: {.content-visible when-profile="r-teaching-guide"}
@@ -18,24 +17,43 @@ Teaching Note
 :::
 
 ::: {.teaching-block-body}
+🎯 **Learning Objectives**
 
-🎯 **Learning Objective** 
 Students should:
 
-- XXXXX
+- Understand the strategic trade-offs between efficiency and responsiveness in inventory systems
+- Recognise why traditional cost-minimising models (like lean or just-in-time) may fail under uncertainty
+- Apply this idea to real retail planning at David Jones, especially during seasonal peaks
 
-✅   **Core Concepts to Highlight**
+✅  **Core Concepts to Highlight**
 
-List them here
+**Efficiency vs. Flexibility Trade-off:**
+Traditional models aim to reduce waste and cost (e.g. lean, EOQ), but this can create vulnerability when demand is volatile or supply chains are disrupted.
 
+**Resilience in Inventory Planning:**
+The article recommends incorporating uncertainty buffers, scenario planning, and dynamic reforecasting into modern inventory models.
 
-💬 **Suggested In-Class Prompts** (if needed)
+**Strategic Implication for Retailers:**
+Seasonal demand (like Christmas) is inherently unpredictable. Retailers like David Jones must plan not only for expected demand but also for variance in demand — including regional differences and promotional effects.
 
-List as needed
+💬 Suggested In-Class Prompts
+
+“What’s the risk if David Jones doesn’t hold safety stock during Christmas season?”
+
+“Why might a perfectly efficient system become struggle during the holidays?”
+
+“What types of uncertainty does David Jones face when planning inventory?”
+
+“How would you build flexibility into a retail inventory strategy?”
+
+“Can you think of a real example where a store ran out of something during a big shopping period? What impact did this have on you as a customer”
 
 📌 **Common Misunderstandings**
 
-List as needed
+- Assuming inventory management is just about tracking inventory, not planning it.
+- Believing that efficiency (lean, just-in-time) is always the best strategy
+- Assuming you can forecast demand precisely — students often forget to account for uncertainty
+- Treating inventory planning as purely operational rather than strategic and data-informed
 
 :::
 
@@ -55,11 +73,35 @@ Solution
 
 ::: {.solution-block-body}
 
-Here’s the explanation and code:
+(a)
+Inventory Management is the process of planning, tracking, and controlling stock so that a business can meet customer demand without holding excess or running out.
 
-```{r}
-print("Hello, world!")
-```
+For David Jones, the challenge stems from when **demand for gift hampers can spike quickly** — poor planning could mean lost sales, unhappy customers, or leftover stock that must be heavily discounted.
+
+**Extra info:** 
+
+There are three key techniques in inventory management:
+
+**Economic Order Quantity (EOQ):**
+A formula used to determine the optimal quantity to order that minimises total inventory costs — including both ordering costs and holding costs.
+
+Think of EOQ as the sweet spot: not too frequent, not too much.
+
+**Safety Stock:**
+Extra buffer stock kept on hand to prevent stockouts due to unexpected spikes in demand or delays in delivery.
+
+It’s like a “just-in-case” cushion for uncertainty.
+
+**Reorder Point:**
+The inventory level at which a new order should be placed so stock arrives before you run out.
+
+It accounts for delivery lead time + expected demand.
+
+(b)
+One key challenge is balancing efficiency with flexibility. Many traditional inventory systems aim to minimise costs by keeping stock levels low (like with just-in-time models), but these systems struggle when there is uncertainty or sudden changes in demand. This makes businesses vulnerable to stockouts or delays when things don’t go as planned.
+
+(c)
+David Jones experiences unpredictable demand spikes during the holiday season. If they rely on a rigid or overly efficient inventory rule, they risk running out of popular items like gift hampers or over-ordering and being left with excess stock. To avoid this, they need a more flexible approach that can adjust to regional sales trends, promotion effects, and delivery timing issues.
 :::
 
 :::

@@ -3,6 +3,9 @@
 
 By the end of this tutorial, you should be able to:
 
-- COMPLETE THIS
-- WITH MULTIPLE BULLETS
+- Explain what **Quarto** is and why analysts use it
+- Run R code inside a `.qmd` file and **render** a report
+- Load a small dataset and compute a few **inventory KPIs**
+- Produce a simple table and a basic plot
+- Write a manager-friendly recommendation that separates **facts vs interpretation vs decision**
 :::

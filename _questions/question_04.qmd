@@ -1,12 +1,17 @@
 <!-- question-type: prepare -->
-### Exercise 4: Title
+### Exercise 4: R + Quarto Vocabulary Check (5 Quick Definitions)
 
-This is the text for the question, with its accompanying code 
+Answer each in **one short sentence**.
 
-```{r}
-# Example code for the question
-1 + 1
-```
+**(a)** What does `<-` do in R?
+
+**(b)** What is a **data frame** (and what does a row represent in our David Jones data)?
+
+**(c)** What is a **function** in R? Give one example.
+
+**(d)** What is a **code chunk** in a Quarto `.qmd` file?
+
+**(e)** What does **Render** do in Quarto?
 
 <!-- BEGIN PROFILE:r-teaching-guide -->
 ::: {.content-visible when-profile="r-teaching-guide"}
@@ -22,11 +27,21 @@ Teaching Note
 🎯 **Learning Objective** 
 Students should:
 
-- XXXXX
+- Define five core R/Quarto terms they will use weekly (<-, data frame/row, function, code chunk, render).
+
+- Distinguish R concepts (objects/functions/data frames) from Quarto concepts (chunks/render).
 
 ✅   **Core Concepts to Highlight**
 
-List them here
+`<-` (assignment): stores a value under a name (creates an object).
+
+Data frame: a table; row = one observation; column = one variable.
+
+Function: a command that takes inputs and returns an output (sum(), mean(), min()).
+
+Code chunk: where R code lives inside a .qmd; it runs during rendering and produces output.
+
+Render: runs all chunks and produces the finished report (HTML/PDF).
 
 
 💬 **Suggested In-Class Prompts** (if needed)
@@ -35,7 +50,25 @@ List as needed
 
 📌 **Common Misunderstandings**
 
-List as needed
+`<-` vs `=` confusion: students use `=` everywhere.
+
+- Response: “In this course, use <- for assignment. Think ‘arrow puts value into a name.’”
+
+Row/column confusion: students say “row = variable.”
+
+- Response: “Row is one case (region-week). Column is one measure (units_sold).”
+
+Function misunderstanding: they describe functions as “a variable” or “a package.”
+
+- Response: “A function is a verb. It does something to an input.”
+
+Code chunk vs console: students type in console and wonder why the report doesn’t update.
+
+- Response: “If it’s not in a chunk, it won’t be reproduced when you render.”
+
+Render misunderstanding: they think render “saves” rather than “runs + produces output.”
+
+- Response: “Render = run everything and rebuild the report from scratch.”
 
 :::
 
@@ -55,11 +88,20 @@ Solution
 
 ::: {.solution-block-body}
 
-Here’s the explanation and code:
+**(a)** What does `<-` do in R?  
+**Solution:** It **assigns** the value on the right to the object name on the left (e.g., `x <- 5` stores 5 in `x`).
 
-```{r}
-print("Hello, world!")
-```
+**(b)** What is a **data frame** (and what does a row represent in our David Jones data)?  
+**Solution:** A **data frame** is a table with rows and columns; here, **one row** represents one **region-week observation** (e.g., Sydney in the week commencing 2 Dec).
+
+**(c)** What is a **function** in R? Give one example.  
+**Solution:** A **function** is a command that takes inputs and returns an output (e.g., `sum(x)`, `mean(x)`, `min(x)`).
+
+**(d)** What is a **code chunk** in a Quarto `.qmd` file?  
+**Solution:** A **code chunk** is a block where you write R code that Quarto runs when rendering, and it shows the results (numbers/tables/plots) in the output.
+
+**(e)** What does **Render** do in Quarto?  
+**Solution:** **Render** runs all code chunks and converts the `.qmd` into an output document (e.g., HTML/PDF) with the results inserted.
 :::
 
 :::

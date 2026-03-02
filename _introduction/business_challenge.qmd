@@ -1,3 +1,20 @@
 ## The Business Challenge
 
-Explain the Business Challenge and set up in this file
+David Jones sells a wide range of seasonal products, including fashion items that see strong swings in demand around holidays like Christmas.
+
+Inventory decisions are especially challenging for seasonal products because:
+
+- Demand can spike unpredictably
+- Promotions and discounts influence customer behaviour
+- Regional preferences can differ
+- Suppliers need advance notice to adjust deliveries
+
+Right now, David Jones is using a fixed restocking rule:
+
+> Every week, **100 units** are delivered to each region, no matter what.
+
+But with the holiday season approaching, this rigid approach might not be enough.
+
+**Management wants a one-page briefing outlining whether they should adapt their restocking rule.**
+
+Your task is to review last year's data and advise David Jones on how to improve inventory decisions.

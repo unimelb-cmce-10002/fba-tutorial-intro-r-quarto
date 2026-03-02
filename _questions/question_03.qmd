@@ -1,12 +1,30 @@
 <!-- question-type: prepare -->
-### Exercise 3: Title
+### Exercise 3: Getting Set Up in Posit Cloud
 
-This is the text for the question, with its accompanying code 
+Before we proceed, we need everyone working in the same environment. Complete the following steps:
 
-```{r}
-# Example code for the question
-1 + 1
-```
+**Step 1**: Log in to Posit Cloud
+
+* Go to the Posit Cloud workspace link provided on the LMS.
+* Log in using your University account.
+
+**Step 2**: Make your own copy of the workshop project
+
+- Locate the workshop project in Posit Cloud.
+- Click Make a Copy to create your own version.
+
+
+**Step 3**: Open the Quarto file
+
+- In the Files pane, locate the workshop Quarto document: `tutorial_02_inventory.qmd`.
+- Click it to open it in the editor.
+
+**Step 4**: Render the document
+
+* Find the Render button (top of the editor).
+* Click Render.
+
+If everything is set up correctly, a new tab should appear in your browser with the rendered content.
 
 <!-- BEGIN PROFILE:r-teaching-guide -->
 ::: {.content-visible when-profile="r-teaching-guide"}
@@ -22,20 +40,28 @@ Teaching Note
 🎯 **Learning Objective** 
 Students should:
 
-- XXXXX
+Access the course workspace in Posit Cloud and locate the workshop project.
+
+Create their own copy of the workshop materials (so they can edit without affecting others).
+
+Open the provided .qmd file and render it successfully.
 
 ✅   **Core Concepts to Highlight**
 
-List them here
+Project (Posit Cloud): a self-contained workspace with files, data, and configuration.
+
+Copy vs master project: the master is read-only/shared; students work in their own copy to avoid conflicts.
+
+Quarto .qmd: a report file that mixes text + code chunks.
 
 
 💬 **Suggested In-Class Prompts** (if needed)
 
-List as needed
+N/A
 
 📌 **Common Misunderstandings**
 
-List as needed
+N/A
 
 :::
 
