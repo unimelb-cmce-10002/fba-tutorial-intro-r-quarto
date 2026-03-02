@@ -1,12 +1,11 @@
 <!-- question-type: prepare -->
-### Exercise 5: Title
+### Exercise 5: Quick Recap of Preparation Work
 
-This is the text for the question, with its accompanying code 
+With your group answer the following questions:
 
-```{r}
-# Example code for the question
-1 + 1
-```
+**(a)** In one sentence, what is the core trade-off in inventory management for a retailer like David Jones?
+
+**(b)** What are the two biggest issues with the dataset presented in Exercise 2? Justify your choices.
 
 <!-- BEGIN PROFILE:r-teaching-guide -->
 ::: {.content-visible when-profile="r-teaching-guide"}
@@ -22,20 +21,36 @@ Teaching Note
 🎯 **Learning Objective** 
 Students should:
 
-- XXXXX
+State the core inventory trade-off in one sentence (stockouts vs overstock).
+
+Evaluate the dataset by selecting two high-impact issues and justifying why they matter for decisions.
+
+Defend choices in a short group discussion (practice managerial reasoning, not just “spotting errors”).
 
 ✅   **Core Concepts to Highlight**
 
-List them here
+Stockout vs overstock: lost sales/customer harm vs holding/markdown costs.
+
+Data issue vs decision risk: something can “run in R” and still produce a misleading recommendation.
+
+Specificity standard: good critiques point to a column/value and a consequence.
 
 
 💬 **Suggested In-Class Prompts** (if needed)
 
-List as needed
+“For (a), keep it to one sentence. No jargon.”
+
+“For (b), what’s your most decision-relevant issue? Why would management care?”
+
+“Is your issue mainly about code/structure, meaning, or decision risk?”
+
+“If you could fix only one thing before tomorrow’s meeting, what would it be?”
 
 📌 **Common Misunderstandings**
 
-List as needed
+Students list issues but don’t justify them.
+
+* Prompt: “So what? What goes wrong if we ignore it?”
 
 :::
 
@@ -55,11 +70,24 @@ Solution
 
 ::: {.solution-block-body}
 
-Here’s the explanation and code:
+**(a)** 
 
-```{r}
-print("Hello, world!")
-```
+Inventory management is about avoiding stockouts (and consequently lost sales/customer frustration) while avoiding overstock (holding costs/markdowns).
+
+(b) Two biggest dataset issues (example strong pairs + justifications)
+There isn’t a single right pair — the key is that students pick issues that materially affect interpretation or computation and justify them clearly.
+
+Here are high-quality answers you can accept, but there are other suitable answers if well justified:
+
+Pair 1 (code/type + meaning):
+
+* Ending Inventory = -20 (backorder) mixes numbers with text → breaks numeric analysis (min/comparisons) and hides how backorders are recorded.
+* Timing ambiguity (do deliveries arrive before or after sales each week?) → changes the inventory flow story, so “risky weeks” and recommended orders could be wrong.
+
+Pair 2 (structure + decision risk):
+
+* Promotion mixes Y and Y (Christmas) → unclear whether this is the same treatment; complicates grouping and comparisons.
+* Units Sold may be constrained by stockouts → observed sales may understate true demand, so forecasting based on sales can mislead.
 :::
 
 :::

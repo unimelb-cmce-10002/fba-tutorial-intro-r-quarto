@@ -1,12 +1,20 @@
 <!-- question-type: inclass -->
-### Exercise 8: Title
+### Exercise 8: Turning Numbers into a Story (Before We Recommend Anything)
 
-This is the text for the question, with its accompanying code 
+You've just computed a few KPIs in R (revenue, units sold, minimum ending inventory, and whether backorders occurred).
 
-```{r}
-# Example code for the question
-1 + 1
-```
+Before we jump to "what should David Jones order?", we need to answer a more basic question:
+
+> **What do the numbers actually tell us — and what do they *not* tell us?**
+
+**(a)** What are the **two most important facts** you learned from your KPIs?  
+
+Write them as two short bullet points (each should reference a KPI you computed).
+
+**(b)** Based on those facts, what is your group's best guess about what will happen next week if David Jones keeps doing the same thing?
+
+**(c)** What is one caveat you would tell management about your answer to (b)?
+
 
 <!-- BEGIN PROFILE:r-teaching-guide -->
 ::: {.content-visible when-profile="r-teaching-guide"}
@@ -22,20 +30,38 @@ Teaching Note
 🎯 **Learning Objective** 
 Students should:
 
-- XXXXX
+- **Translate** computed KPIs into 1–2 clear factual takeaways (no jargon, manager-readable).  
+- **Distinguish** what the KPIs support as **facts** versus what requires a **guess/assumption**.  
+- **Formulate** a cautious prediction (“best guess”) that is clearly conditional on “if nothing changes.”  
+- **State** one concrete caveat that limits confidence in the prediction (data definition/design limitation).
+
 
 ✅   **Core Concepts to Highlight**
 
-List them here
+- **Fact vs inference:** KPIs are facts; “what happens next” is an inference based on assumptions.  
+- **Prediction (conditional):** a forward-looking statement that depends on stable conditions.  
+- **Caveat:** a limitation in the data or design that could change interpretation (timing, measurement, censoring, confounding).  
+- **Manager communication:** short, specific, and grounded in a number the group computed.
 
 
 💬 **Suggested In-Class Prompts** (if needed)
 
-List as needed
+- “Point to the KPI that supports your Fact 1.”  
+- “Which part of (b) is a guess rather than a fact?”  
+- “If management asked ‘how sure are you?’, what’s your caveat?”  
+- “Is your caveat about **measurement** (what does the variable mean) or **inference** (what conclusions we can draw)?”
+
 
 📌 **Common Misunderstandings**
 
-List as needed
+- **Students restate numbers without meaning** (“rev_syd = …”)  
+  - Fix: require a plain-English sentence: “Melbourne is larger by revenue/units sold.”  
+- **Students make causal claims** (“promotion caused the spike”)  
+  - Fix: reframe: “We observe a coincidence; causality needs stronger evidence.”  
+- **Caveats are vague** (“data might be wrong”)  
+  - Fix: push specificity: timing of deliveries, backorder recording, sales constrained by inventory, price/promo confounding.  
+- **Groups’ facts contradict** due to coding mistakes  
+  - Fix: use as diagnostic: check filters (`==`), region labels, column names.
 
 :::
 
@@ -55,11 +81,28 @@ Solution
 
 ::: {.solution-block-body}
 
-Here’s the explanation and code:
+There isn’t a single “correct” set of sentences. A good answer uses the group’s computed KPIs and stays disciplined about what the data can (and can’t) support.
 
-```{r}
-print("Hello, world!")
-```
+**(a) Two most important facts (examples of strong answers)**  
+Accept any two that reference computed KPIs clearly, for example:
+
+- **Fact (demand/value):** Melbourne generated higher total **units sold / revenue** than Sydney over these weeks.  
+- **Fact (risk):** Inventory risk is higher in Melbourne: it has the lowest **ending inventory**, and there is at least one **backorder** (ending inventory < 0).  
+- **Fact (timing spike):** The Christmas promo week coincides with the largest jump in **units sold** and a sharp drop in **ending inventory** in both regions.
+
+
+**(b) Best guess for next week if nothing changes (examples)**  
+A strong answer is predictive but conditional, e.g.:
+
+- If David Jones keeps delivering 100 units and demand stays similar, **Melbourne is likely to stock out / backorder again**, while Sydney is less likely to (but could still run low).  
+- Expect **higher risk in Melbourne** because its sales appear higher and its ending inventory hit the lowest/negative values.
+
+
+**(c) One caveat to tell management (examples)**  
+Good caveats point to a specific limitation:
+
+- We don’t know **when deliveries arrive** relative to sales within the week, which affects the interpretation of “ending inventory risk.”  
+- The dataset is **small** (few weeks), so forecasts are uncertain and sensitive to assumptions.
 :::
 
 :::

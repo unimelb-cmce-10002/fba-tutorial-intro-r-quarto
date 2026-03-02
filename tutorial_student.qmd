@@ -140,74 +140,176 @@ Answer each in **one short sentence**.
 
 *Write your answer here*
 
-### Exercise 5: Title
+### Exercise 5: Quick Recap of Preparation Work
 
-This is the text for the question, with its accompanying code 
+With your group answer the following questions:
 
-```{r}
-# Example code for the question
-1 + 1
-```
+**(a)** In one sentence, what is the core trade-off in inventory management for a retailer like David Jones?
 
-```{r}
-# Write your answer here
-```
+**(b)** What are the two biggest issues with the dataset presented in Exercise 2? Justify your choices.
+
+*Write your answer here*
 
 ## In-Class Exercises
 
 You will discuss these exercises in class with your peers in small groups and with your tutor. These exercises build from the exercises you have prepared above, you will get the most value from the class if you have completed those above before coming to class.
 
-### Exercise 1: Title
+### Exercise 6: Loading and Inspecting Some Data
 
-This is the text for the question, with its accompanying code 
+(a) Open the Posit Cloud Workspace for this workshop.
+
+(b) Load the dataset by running this line of code:
 
 ```{r}
-# Example code for the question
-1 + 1
+#| eval: false
+library(readr)
+
+inventory <- read_csv("data/inventory.csv") 
+```
+
+**(c)** We want to explain the code in (b) is doing, line by line.
+
+* What does ` ```{r} ` mean in Quarto?
+* What does `#| eval: false` do? 
+* Do you need to change the `#| eval: false` setting to run the code when you render the file?
+* What does `library(readr)` do?
+* Explain what the assignment operator `<-`?, does.
+* Is `read_csv()` a function or a variable?
+* What does `"data/inventory.csv"` refer to?
+
+(d)  Run each of the following commands, and explain the output to your group:
+
+* `class(inventory)`
+* `names(inventory)`
+* `head(inventory)`
+* `nrow(inventory)`
+* `ncol(inventory)`
+
+*Write your answer here*
+
+### Exercise 7: First Steps Working with Data
+
+Let's compute two manager-relevant variables:
+
+1. **Revenue by region**, and
+2. **Inventory risk** (how low inventory gets).
+
+::: {.callout-tip}
+
+You will need to use the following R commands in this exercise:
+
+* column access with `$`
+* logical filtering with `==`
+* multiplication with (`*`)
+* `sum()` and `min()`
+
+:::
+
+**(a)** Create a new column called `revenue` that equals `units_sold` times  `unit_price`.
+
+```{r}
+#| eval: false
+
+# Create revenue using simple arithmetic
+inventory$revenue <- YOUR_CODE_HERE
+```
+
+**(b)** Compute total revenue for both Sydney and Melbourne
+
+```{r}
+#| eval: false
+
+# first filter the relevant rows of data
+syd <-  inventory$revenue[YOUR_CONDITION]  # Condition should be about region == Sydney 
+mel <-  YOUR_CODE_HERE[YOUR_CONDITION]     # Condition should be about region == Melbourne 
+
+# Then compute total revenue
+rev_syd  <- sum( YOUR_CODE_HERE )
+rev_melb <- YOUR_CODE_HERE
+
+rev_syd
+rev_melb
+```
+
+**(c)** Compute total units sold for Sydney and Melbourne. 
+
+::: {.callout-warning}
+
+Use the code from (b) as a template for this exercise. The steps you need to perform are very similar.
+
+:::
+
+```{r}
+#| eval: false
+
+YOUR_CODE_HERE
+
+sold_syd  <- sum( YOUR_CODE_HERE )
+sold_melb <- YOUR_CODE_HERE
+
+sold_syd
+sold_melb
+```
+
+**(d)** Find the minimum ending inventory for each region
+
+```{r}
+#| eval: false
+
+min_end_syd  <- YOUR_CODE_HERE
+min_end_melb <- YOUR_CODE_HERE
+
+min_end_syd
+min_end_melb
+```
+
+**(e)** A backorder occurs when `ending_inventory` is negative.
+
+1. Does *any* row have `ending_inventory < 0`?
+2. If yes, display those rows.
+
+```{r}
+#| eval: false
+
+any_backorders <- any(YOUR_CODE_HERE)  # Should use the ending_inventory column
+                                       # to check whether < 0 
+any_backorders
+
+backorder_rows <- inventory[ YOUR_CODE_HERE , ]  # Use the same condition as above
+backorder_rows
 ```
 
 ```{r}
 # Write your answer here
 ```
 
-### Exercise 7: Title
+### Exercise 8: Turning Numbers into a Story (Before We Recommend Anything)
 
-This is the text for the question, with its accompanying code 
+You've just computed a few KPIs in R (revenue, units sold, minimum ending inventory, and whether backorders occurred).
 
-```{r}
-# Example code for the question
-1 + 1
-```
+Before we jump to "what should David Jones order?", we need to answer a more basic question:
 
-```{r}
-# Write your answer here
-```
+> **What do the numbers actually tell us — and what do they *not* tell us?**
 
-### Exercise 8: Title
+**(a)** What are the **two most important facts** you learned from your KPIs?  
 
-This is the text for the question, with its accompanying code 
+Write them as two short bullet points (each should reference a KPI you computed).
 
-```{r}
-# Example code for the question
-1 + 1
-```
+**(b)** Based on those facts, what is your group's best guess about what will happen next week if David Jones keeps doing the same thing?
 
-```{r}
-# Write your answer here
-```
+**(c)** What is one caveat you would tell management about your answer to (b)?
 
-### Exercise 9: Title
+*Write your answer here*
 
-This is the text for the question, with its accompanying code 
+### Exercise 8: Planning for This Year's Holiday Season
 
-```{r}
-# Example code for the question
-1 + 1
-```
+David Jones’ supplier is asking you to confirm delivery quantities **now**, so they can prepare for the season ahead.
 
-```{r}
-# Write your answer here
-```
+(a) How many units should you order for Sydney and Melbourne for the first week of the holiday season?
+(b) Justify your decision based on last year's patterns and your reasoning. Consider factors like demand trends, regional differences, price effects, and promotion timing.
+(c) Suppose the supplier has limited capacity and can only supply 200 units total for the first week.  How would you allocate this stock between Sydney and Melbourne? What are the risks of your choice?
+
+*Write your answer here*
 
 ### Exercise 10: Title
 

@@ -1,12 +1,99 @@
 <!-- question-type: inclass -->
-### Exercise 7: Title
+### Exercise 7: First Steps Working with Data
 
-This is the text for the question, with its accompanying code 
+Let's compute two manager-relevant variables:
+
+1. **Revenue by region**, and
+2. **Inventory risk** (how low inventory gets).
+
+
+::: {.callout-tip}
+
+You will need to use the following R commands in this exercise:
+
+* column access with `$`
+* logical filtering with `==`
+* multiplication with (`*`)
+* `sum()` and `min()`
+
+:::
+
+**(a)** Create a new column called `revenue` that equals `units_sold` times  `unit_price`.
 
 ```{r}
-# Example code for the question
-1 + 1
+#| eval: false
+
+# Create revenue using simple arithmetic
+inventory$revenue <- YOUR_CODE_HERE
 ```
+
+**(b)** Compute total revenue for both Sydney and Melbourne
+
+```{r}
+#| eval: false
+
+# first filter the relevant rows of data
+syd <-  inventory$revenue[YOUR_CONDITION]  # Condition should be about region == Sydney 
+mel <-  YOUR_CODE_HERE[YOUR_CONDITION]     # Condition should be about region == Melbourne 
+
+# Then compute total revenue
+rev_syd  <- sum( YOUR_CODE_HERE )
+rev_melb <- YOUR_CODE_HERE
+
+rev_syd
+rev_melb
+```
+
+**(c)** Compute total units sold for Sydney and Melbourne. 
+
+::: {.callout-warning}
+
+Use the code from (b) as a template for this exercise. The steps you need to perform are very similar.
+
+:::
+
+```{r}
+#| eval: false
+
+YOUR_CODE_HERE
+
+sold_syd  <- sum( YOUR_CODE_HERE )
+sold_melb <- YOUR_CODE_HERE
+
+sold_syd
+sold_melb
+```
+
+**(d)** Find the minimum ending inventory for each region
+
+```{r}
+#| eval: false
+
+min_end_syd  <- YOUR_CODE_HERE
+min_end_melb <- YOUR_CODE_HERE
+
+min_end_syd
+min_end_melb
+```
+
+
+**(e)** A backorder occurs when `ending_inventory` is negative.
+
+1. Does *any* row have `ending_inventory < 0`?
+2. If yes, display those rows.
+
+```{r}
+#| eval: false
+
+any_backorders <- any(YOUR_CODE_HERE)  # Should use the ending_inventory column
+                                       # to check whether < 0 
+any_backorders
+
+backorder_rows <- inventory[ YOUR_CODE_HERE , ]  # Use the same condition as above
+backorder_rows
+```
+
+
 
 <!-- BEGIN PROFILE:r-teaching-guide -->
 ::: {.content-visible when-profile="r-teaching-guide"}
@@ -22,20 +109,42 @@ Teaching Note
 🎯 **Learning Objective** 
 Students should:
 
-- XXXXX
+- **Compute** a new variable using simple arithmetic (`revenue = units_sold * unit_price`).  
+- **Subset** rows using a logical condition (`region == "Sydney"` / `"Melbourne"`).  
+- **Summarise** data with `sum()` and `min()` to produce manager-relevant KPIs.  
+- **Diagnose** common beginner errors (wrong column names, wrong filter, forgetting to evaluate chunks).
 
 ✅   **Core Concepts to Highlight**
 
-List them here
+- **New variable (column):** `inventory$revenue <- ...` adds a column to the data frame.  
+- **Logical filtering:** `inventory$region == "Sydney"` returns TRUE/FALSE for each row; using it inside `[...]` keeps only matching rows.  
+- **`sum()` / `min()`:** reduce a vector to a single number (total vs lowest value).  
+- **Sanity check habit:** after each step, print objects (`rev_syd`, `min_end_melb`) to confirm they look plausible.
+
 
 
 💬 **Suggested In-Class Prompts** (if needed)
 
-List as needed
+- “What does `inventory$revenue <- ...` change about the dataset?”  
+- “What type of thing is `inventory$region == "Sydney"`? What does it look like?”  
+- “Why do we create `syd_rev` first instead of putting everything inside `sum()`?”  
+- “Which KPI is about *size/value* (revenue) and which is about *risk* (ending inventory)?”  
+- “If you got `NA`, what’s the first thing you would check?”
 
 📌 **Common Misunderstandings**
 
-List as needed
+- **Column name mismatch** (`units_sold` vs `Units Sold`, etc.).  
+  - Fix: run `names(inventory)` and copy-paste the exact name.  
+- **Filtering mistake** (`inventory$region = "Sydney"` or missing `==`).  
+  - Fix: remind: `==` compares, `<-` assigns.  
+- **Forgetting quotes** (`region == Sydney`).  
+  - Fix: text values need quotes: `"Sydney"`.  
+- **Using the whole column in `sum()` without filtering** (they compute total across both regions).  
+  - Fix: ask them to print `syd_rev` and check it’s shorter than full dataset.  
+- **Chunk not running** because `#| eval: false` is still present.  
+  - Fix: remove/flip to true; rerender; confirm objects appear in Environment.  
+- **`min()` returns weird values** because `ending_inventory` imported as text.  
+  - Fix: link back to data-quality triage; ensure the clean CSV is being used.
 
 :::
 
@@ -55,11 +164,80 @@ Solution
 
 ::: {.solution-block-body}
 
-Here’s the explanation and code:
+Assumes the dataset has these column names: `region`, `units_sold`, `unit_price`, `ending_inventory`.
+
+
+**(a)** Create `revenue = units_sold * unit_price`
 
 ```{r}
-print("Hello, world!")
+#| eval: false
+
+inventory$revenue <- inventory$units_sold * inventory$unit_price
 ```
+
+
+**(b)** Total revenue for Sydney and Melbourne
+
+```{r}
+#| eval: false
+
+syd_rev <- inventory$revenue[inventory$region == "Sydney"]
+mel_rev <- inventory$revenue[inventory$region == "Melbourne"]
+
+rev_syd  <- sum(syd_rev)
+rev_melb <- sum(mel_rev)
+
+rev_syd
+rev_melb
+```
+
+
+**(c)** Total units sold for Sydney and Melbourne
+
+```{r}
+#| eval: false
+
+syd_sold <- inventory$units_sold[inventory$region == "Sydney"]
+mel_sold <- inventory$units_sold[inventory$region == "Melbourne"]
+
+sold_syd  <- sum(syd_sold)
+sold_melb <- sum(mel_sold)
+
+sold_syd
+sold_melb
+```
+
+
+
+**(d)** Minimum ending inventory for each region
+
+```{r}
+#| eval: false
+
+syd_end <- inventory$ending_inventory[inventory$region == "Sydney"]
+mel_end <- inventory$ending_inventory[inventory$region == "Melbourne"]
+
+min_end_syd  <- min(syd_end)
+min_end_melb <- min(mel_end)
+
+min_end_syd
+min_end_melb
+```
+
+
+
+**(e)** Backorders (ending inventory < 0)
+
+```{r}
+#| eval: false
+
+any_backorders <- any(inventory$ending_inventory < 0)
+any_backorders
+
+backorder_rows <- inventory[inventory$ending_inventory < 0, ]
+backorder_rows
+```
+
 :::
 
 :::

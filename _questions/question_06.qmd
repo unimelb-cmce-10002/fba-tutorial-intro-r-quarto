@@ -1,12 +1,35 @@
 <!-- question-type: inclass -->
-### Exercise 1: Title
+### Exercise 6: Loading and Inspecting Some Data
 
-This is the text for the question, with its accompanying code 
+(a) Open the Posit Cloud Workspace for this workshop.
+
+(b) Load the dataset by running this line of code:
 
 ```{r}
-# Example code for the question
-1 + 1
+#| eval: false
+library(readr)
+
+inventory <- read_csv("data/inventory.csv") 
 ```
+
+**(c)** We want to explain the code in (b) is doing, line by line.
+
+* What does ` ```{r} ` mean in Quarto?
+* What does `#| eval: false` do? 
+* Do you need to change the `#| eval: false` setting to run the code when you render the file?
+* What does `library(readr)` do?
+* Explain what the assignment operator `<-`?, does.
+* Is `read_csv()` a function or a variable?
+* What does `"data/inventory.csv"` refer to?
+
+(d)  Run each of the following commands, and explain the output to your group:
+
+* `class(inventory)`
+* `names(inventory)`
+* `head(inventory)`
+* `nrow(inventory)`
+* `ncol(inventory)`
+
 
 <!-- BEGIN PROFILE:r-teaching-guide -->
 ::: {.content-visible when-profile="r-teaching-guide"}
@@ -22,20 +45,61 @@ Teaching Note
 🎯 **Learning Objective** 
 Students should:
 
-- XXXXX
+Interpret a Quarto R code chunk by explaining each line in plain English.
+
+Distinguish what Quarto controls (eval) versus what R controls (library(), <-, functions).
+
+Execute a data import step successfully by ensuring the chunk evaluates during render.
+
+Use the “inspect ritual” (class, names, head, nrow, ncol) to verify what they imported.
+
+Communicate what the inspection output implies about the dataset (type, variables, size, first rows).
 
 ✅   **Core Concepts to Highlight**
 
-List them here
+Code chunk (` ```{r} `): a runnable block of R code inside a `.qmd`.
 
+`#| eval`: Quarto option controlling whether a chunk runs during rendering.
+
+Package name + `library()`: loads a package so its functions are available.
+
+Assignment `<-`: stores a value in an object name.
+
+Function: takes inputs and returns an output (e.g., `read_csv()` reads a file).
+
+Relative file path: "data/inventory.csv" means “look inside the data folder in this project for a file named ... .”
 
 💬 **Suggested In-Class Prompts** (if needed)
 
-List as needed
+“What’s the difference between running a chunk and rendering the document?”
+
+“If eval: false, what do you expect to happen to inventory after render?”
+
+“What does the left side of <- become?”
+
+“What would you check first if the file can’t be found?”
 
 📌 **Common Misunderstandings**
 
-List as needed
+They think code in the console ‘counts’ for the report.
+
+* Fix: “If it’s not in a chunk that evaluates, it won’t be reproduced when you render.”
+
+They don’t realise eval: false prevents the dataset loading on render.
+
+* Fix: make them predict the outcome: “Will inventory exist after render?”
+
+They confuse `read_csv` vs "data/inventory.csv".
+
+* Fix: “Function name vs input argument (file path).”
+
+File path errors (data/inventory.csv not found).
+
+* Fix: check the Files pane: does the data folder exist? is the file name exact?
+
+They misinterpret `class()` output.
+
+* Fix: accept both; emphasise “it’s a table-like object with rows/columns.”
 
 :::
 
@@ -55,11 +119,47 @@ Solution
 
 ::: {.solution-block-body}
 
-Here’s the explanation and code:
+**(c) Explaining the code chunk line by line**
 
-```{r}
-print("Hello, world!")
-```
+- **What does ` ```{r} ` mean in Quarto?**  
+  It starts an **R code chunk**. Code inside the chunk can be run and its output can appear in the rendered document.
+
+- **What does `#| eval: false` do?**  
+  It tells Quarto **not to run** this code chunk when rendering (it will be shown, but not executed).
+
+- **Do you need to change the `#| eval: false` setting to run the code when you render the file?**  
+  **Yes.** To load the dataset during rendering, you must remove it or change it (e.g., to `#| eval: true`) so the chunk executes.
+
+- **What does `library(readr)` do?**  
+  It loads the **readr** package so you can use functions from it (including `read_csv()`).
+
+- **Explain what the assignment operator `<-` does.**  
+  It **stores** the value on the right-hand side into the object name on the left-hand side.  
+  Example: `inventory <- ...` creates an object called `inventory`.
+
+- **Is `read_csv()` a function or a variable?**  
+  It is a **function** (a command that takes inputs and returns an output).
+
+- **What does `"data/inventory.csv"` refer to?**  
+  It is the **file path** to the CSV inside the project.  
+  `data/` is a folder; `inventory.csv` is the file name. It is **relative** to the project directory.
+
+**(d) Inspect commands (what they return / how to interpret them)**
+
+- **`class(inventory)`**  
+  Tells you the **type of object** `inventory` is (typically something like a tibble/data frame).
+
+- **`names(inventory)`**  
+  Lists the **column names** (variable names) in the dataset.
+
+- **`head(inventory)`**  
+  Shows the **first few rows** so you can sanity-check that the data imported correctly.
+
+- **`nrow(inventory)`**  
+  Returns the **number of rows** (how many observations).
+
+- **`ncol(inventory)`**  
+  Returns the **number of columns** (how many variables).
 :::
 
 :::
