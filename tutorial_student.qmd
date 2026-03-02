@@ -311,16 +311,3 @@ David Jones’ supplier is asking you to confirm delivery quantities **now**, so
 
 *Write your answer here*
 
-### Exercise 10: Title
-
-This is the text for the question, with its accompanying code 
-
-```{r}
-# Example code for the question
-1 + 1
-```
-
-```{r}
-# Write your answer here
-```
-
