@@ -1,11 +1,13 @@
 <!-- question-type: inclass -->
-### Exercise 8: Planning for This Year's Holiday Season
+### Exercise 9: Planning for This Year's Holiday Season
 
 David Jones’ supplier is asking you to confirm delivery quantities **now**, so they can prepare for the season ahead.
 
-(a) How many units should you order for Sydney and Melbourne for the first week of the holiday season?
-(b) Justify your decision based on last year's patterns and your reasoning. Consider factors like demand trends, regional differences, price effects, and promotion timing.
-(c) Suppose the supplier has limited capacity and can only supply 200 units total for the first week.  How would you allocate this stock between Sydney and Melbourne? What are the risks of your choice?
+**(a)** How many units should you order for Sydney and Melbourne for the first week of the holiday season?
+
+**(b)** Justify your decision based on last year's patterns and your reasoning. Consider factors like demand trends, regional differences, price effects, and promotion timing.
+
+**(c)** Suppose the supplier has limited capacity and can only supply 200 units total for the first week.  How would you allocate this stock between Sydney and Melbourne? What are the risks of your choice?
 
 <!-- BEGIN PROFILE:r-teaching-guide -->
 ::: {.content-visible when-profile="r-teaching-guide"}

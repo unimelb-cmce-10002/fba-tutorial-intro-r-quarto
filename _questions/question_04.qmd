@@ -5,13 +5,15 @@ Answer each in **one short sentence**.
 
 **(a)** What does `<-` do in R?
 
-**(b)** What is a **data frame** (and what does a row represent in our David Jones data)?
+**(b)** What is a **data frame**. What does a row represent in our David Jones data?
 
-**(c)** What is a **function** in R? Give one example.
+**(c)** What is a **function** in R? Explain using `read_csv()` as an example.
 
 **(d)** What is a **code chunk** in a Quarto `.qmd` file?
 
 **(e)** What does **Render** do in Quarto?
+
+**(f)** What is a **package** in R? Explain using `readr` as an example, including how to load the package into your R session. 
 
 <!-- BEGIN PROFILE:r-teaching-guide -->
 ::: {.content-visible when-profile="r-teaching-guide"}
@@ -37,11 +39,13 @@ Students should:
 
 Data frame: a table; row = one observation; column = one variable.
 
-Function: a command that takes inputs and returns an output (sum(), mean(), min()).
+Function: a command that takes inputs and returns an output (read_csv(), sum(), mean(), min()).
 
 Code chunk: where R code lives inside a .qmd; it runs during rendering and produces output.
 
 Render: runs all chunks and produces the finished report (HTML/PDF).
+
+Package: a collection of functions, data, and documentation that extends the basic capabilites of R
 
 
 💬 **Suggested In-Class Prompts** (if needed)
@@ -94,14 +98,17 @@ Solution
 **(b)** What is a **data frame** (and what does a row represent in our David Jones data)?  
 **Solution:** A **data frame** is a table with rows and columns; here, **one row** represents one **region-week observation** (e.g., Sydney in the week commencing 2 Dec).
 
-**(c)** What is a **function** in R? Give one example.  
-**Solution:** A **function** is a command that takes inputs and returns an output (e.g., `sum(x)`, `mean(x)`, `min(x)`).
+**(c)** What is a **function** in R? Explain using `read_csv()` as an example.  
+**Solution:** A **function** is a command that takes inputs and returns an output. For example, `read_csv(DATA_PATH)` takes the path to a dataset in csv format and returns the file's contents as an output in R.
 
 **(d)** What is a **code chunk** in a Quarto `.qmd` file?  
 **Solution:** A **code chunk** is a block where you write R code that Quarto runs when rendering, and it shows the results (numbers/tables/plots) in the output.
 
 **(e)** What does **Render** do in Quarto?  
 **Solution:** **Render** runs all code chunks and converts the `.qmd` into an output document (e.g., HTML/PDF) with the results inserted.
+
+**(f)** What is a **package** in R? Explain using `library(readr)` as an example.  
+**Solution**: a collection of functions, data, and documentation that extends the basic capabilites of R. For example, `readr` contains functions to load data from different formats into R. `library(readr)` loads the package `readr` into the current R session. You need to run each of the `library(package)` commands once per R session if working interactively.
 :::
 
 :::

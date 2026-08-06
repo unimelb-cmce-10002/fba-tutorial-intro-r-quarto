@@ -9,87 +9,63 @@ Let's compute two manager-relevant variables:
 
 ::: {.callout-tip}
 
-You will need to use the following R commands in this exercise:
+We will use the following R commands in this exercise:
 
 * column access with `$`
 * logical filtering with `==`
 * multiplication with (`*`)
-* `sum()` and `min()`
+* Summing rows of data with `sum()`
+* Finding matches with `any()`
 
 :::
 
-**(a)** Create a new column called `revenue` that equals `units_sold` times  `unit_price`.
+**(a)** Create a new column called `revenue` that equals `units_sold` times  `unit_price` by running the code below. Explain what the code is doing.
 
 ```{r}
 #| eval: false
 
 # Create revenue using simple arithmetic
-inventory$revenue <- YOUR_CODE_HERE
+inventory$revenue <- inventory$units_sold * inventory$unit_price
 ```
 
-**(b)** Compute total revenue for both Sydney and Melbourne
+**(b)** Run the code below to compute total revenue for both Sydney and Melbourne. Explain what step 1, step 2 and step 3 are doing.
 
 ```{r}
 #| eval: false
 
-# first filter the relevant rows of data
-syd <-  inventory$revenue[YOUR_CONDITION]  # Condition should be about region == Sydney 
-mel <-  YOUR_CODE_HERE[YOUR_CONDITION]     # Condition should be about region == Melbourne 
+# STEP 1: EXPLAIN WHAT IS HAPPENING
+syd_data <- inventory[inventory$region == "Sydney", ]
+mel_data <- inventory[inventory$region == "Melbourne", ]
 
-# Then compute total revenue
-rev_syd  <- sum( YOUR_CODE_HERE )
-rev_melb <- YOUR_CODE_HERE
+# STEP 2: EXPLAIN WHAT IS HAPPENING
+rev_syd  <- sum(syd_data$revenue)
+rev_melb <- sum(mel_data$revenue)
 
+# STEP 3: EXPLAIN WHAT IS HAPPENING
 rev_syd
 rev_melb
 ```
 
-**(c)** Compute total units sold for Sydney and Melbourne. 
-
-::: {.callout-warning}
-
-Use the code from (b) as a template for this exercise. The steps you need to perform are very similar.
-
-:::
-
-```{r}
-#| eval: false
-
-YOUR_CODE_HERE
-
-sold_syd  <- sum( YOUR_CODE_HERE )
-sold_melb <- YOUR_CODE_HERE
-
-sold_syd
-sold_melb
-```
-
-**(d)** Find the minimum ending inventory for each region
-
-```{r}
-#| eval: false
-
-min_end_syd  <- YOUR_CODE_HERE
-min_end_melb <- YOUR_CODE_HERE
-
-min_end_syd
-min_end_melb
-```
-
-
-**(e)** A backorder occurs when `ending_inventory` is negative.
+**(c)** A backorder occurs when `ending_inventory` is negative.
 
 1. Does *any* row have `ending_inventory < 0`?
 2. If yes, display those rows.
 
+Run the code below and explain the steps.
+
 ```{r}
 #| eval: false
 
-any_backorders <- any(YOUR_CODE_HERE)  # Should use the ending_inventory column
-                                       # to check whether < 0 
+# STEP 1: EXPLAIN WHAT IS HAPPENING 
+any_backorders <- any(inventory$ending_inventory < 0)
+
+# STEP 2: EXPLAIN WHAT IS HAPPENING 
 any_backorders
 
-backorder_rows <- inventory[ YOUR_CODE_HERE , ]  # Use the same condition as above
+# STEP 3: EXPLAIN WHAT IS HAPPENING 
+backorder_rows <- inventory[inventory$ending_inventory < 0, ]
+
+# STEP 4: EXPLAIN WHAT IS HAPPENING 
 backorder_rows
 ```
 
@@ -111,15 +87,15 @@ Students should:
 
 - **Compute** a new variable using simple arithmetic (`revenue = units_sold * unit_price`).  
 - **Subset** rows using a logical condition (`region == "Sydney"` / `"Melbourne"`).  
-- **Summarise** data with `sum()` and `min()` to produce manager-relevant KPIs.  
+- **Summarise** data with `sum()` to produce manager-relevant KPIs.  
 - **Diagnose** common beginner errors (wrong column names, wrong filter, forgetting to evaluate chunks).
 
 ✅   **Core Concepts to Highlight**
 
 - **New variable (column):** `inventory$revenue <- ...` adds a column to the data frame.  
 - **Logical filtering:** `inventory$region == "Sydney"` returns TRUE/FALSE for each row; using it inside `[...]` keeps only matching rows.  
-- **`sum()` / `min()`:** reduce a vector to a single number (total vs lowest value).  
-- **Sanity check habit:** after each step, print objects (`rev_syd`, `min_end_melb`) to confirm they look plausible.
+- **`sum()`:** reduce a vector to a single number (total).  
+- **Sanity check habit:** after each step, print objects to confirm they look plausible.
 
 
 
@@ -127,7 +103,7 @@ Students should:
 
 - “What does `inventory$revenue <- ...` change about the dataset?”  
 - “What type of thing is `inventory$region == "Sydney"`? What does it look like?”  
-- “Why do we create `syd_rev` first instead of putting everything inside `sum()`?”  
+- “Why do we create `syd_data` first instead of putting everything inside `sum()`?”  
 - “Which KPI is about *size/value* (revenue) and which is about *risk* (ending inventory)?”  
 - “If you got `NA`, what’s the first thing you would check?”
 
@@ -164,8 +140,6 @@ Solution
 
 ::: {.solution-block-body}
 
-Assumes the dataset has these column names: `region`, `units_sold`, `unit_price`, `ending_inventory`.
-
 
 **(a)** Create `revenue = units_sold * unit_price`
 
@@ -175,66 +149,56 @@ Assumes the dataset has these column names: `region`, `units_sold`, `unit_price`
 inventory$revenue <- inventory$units_sold * inventory$unit_price
 ```
 
+Explanation: Creates a new column called `revenue` in the inventory dataset by multiplying two existing columns of data together.
+
 
 **(b)** Total revenue for Sydney and Melbourne
 
 ```{r}
 #| eval: false
 
-syd_rev <- inventory$revenue[inventory$region == "Sydney"]
-mel_rev <- inventory$revenue[inventory$region == "Melbourne"]
+# STEP 1: Create two separate datasets by filtering the rows of inventory by region.
+# The expression inside the square brackets tells R which rows to keep.
+# - inventory$region == "Sydney" keeps only rows for Sydney
+# - inventory$region == "Melbourne" keeps only rows for Melbourne
+# The comma before ] means: keep all columns for those rows.
+syd_data <- inventory[inventory$region == "Sydney", ]
+mel_data <- inventory[inventory$region == "Melbourne", ]
 
-rev_syd  <- sum(syd_rev)
-rev_melb <- sum(mel_rev)
+# STEP 2: Take the revenue column from each regional dataset and add up all values.
+# This gives total revenue for Sydney and total revenue for Melbourne.
+rev_syd  <- sum(syd_data$revenue)
+rev_melb <- sum(syd_data$revenue)
 
+# STEP 3: Print the two totals to the screen.
+# This lets us compare total revenue across the two regions.
 rev_syd
 rev_melb
 ```
 
 
-**(c)** Total units sold for Sydney and Melbourne
+
+
+**(c)** Backorders (ending inventory < 0)
 
 ```{r}
 #| eval: false
 
-syd_sold <- inventory$units_sold[inventory$region == "Sydney"]
-mel_sold <- inventory$units_sold[inventory$region == "Melbourne"]
-
-sold_syd  <- sum(syd_sold)
-sold_melb <- sum(mel_sold)
-
-sold_syd
-sold_melb
-```
-
-
-
-**(d)** Minimum ending inventory for each region
-
-```{r}
-#| eval: false
-
-syd_end <- inventory$ending_inventory[inventory$region == "Sydney"]
-mel_end <- inventory$ending_inventory[inventory$region == "Melbourne"]
-
-min_end_syd  <- min(syd_end)
-min_end_melb <- min(mel_end)
-
-min_end_syd
-min_end_melb
-```
-
-
-
-**(e)** Backorders (ending inventory < 0)
-
-```{r}
-#| eval: false
-
+# STEP 1: Create a single TRUE/FALSE value that checks whether
+# any product in the inventory data has negative ending inventory.
+# If at least one row has ending_inventory < 0, this will be TRUE.
 any_backorders <- any(inventory$ending_inventory < 0)
+
+# STEP 2: Display the value stored in any_backorders.
+# This tells us whether any backorders exist at all. 
 any_backorders
 
+# STEP 3: Create a new dataset containing only the rows where
+# ending_inventory is negative. These are the cases where backorders occurred.
 backorder_rows <- inventory[inventory$ending_inventory < 0, ]
+
+# STEP 4: Display the filtered dataset of backorder rows.
+# This lets us inspect which products/regions/periods had backorders.
 backorder_rows
 ```
 

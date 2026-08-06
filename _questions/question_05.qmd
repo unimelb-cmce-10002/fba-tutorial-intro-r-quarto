@@ -74,7 +74,9 @@ Solution
 
 Inventory management is about avoiding stockouts (and consequently lost sales/customer frustration) while avoiding overstock (holding costs/markdowns).
 
-(b) Two biggest dataset issues (example strong pairs + justifications)
+**(b)**
+
+Two biggest dataset issues (example strong pairs + justifications)
 There isn’t a single right pair — the key is that students pick issues that materially affect interpretation or computation and justify them clearly.
 
 Here are high-quality answers you can accept, but there are other suitable answers if well justified:

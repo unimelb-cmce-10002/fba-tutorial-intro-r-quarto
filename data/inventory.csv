@@ -1,0 +1,11 @@
+week_commencing,week_index,region,starting_inventory,units_delivered,units_sold,ending_inventory,backorder_units,promo,promo_type,list_price,discount_pct,unit_price,currency
+2024-11-25,1,Sydney,500,100,100,500,0,0,none,50,0.00,50,AUD
+2024-11-25,1,Melbourne,500,100,150,450,0,0,none,50,0.00,50,AUD
+2024-12-02,2,Sydney,500,100,180,420,0,1,standard,50,0.10,45,AUD
+2024-12-02,2,Melbourne,450,100,220,330,0,1,standard,50,0.10,45,AUD
+2024-12-09,3,Sydney,420,100,150,370,0,1,standard,50,0.10,45,AUD
+2024-12-09,3,Melbourne,330,100,100,330,0,1,standard,50,0.10,45,AUD
+2024-12-16,4,Sydney,370,100,400,70,0,1,christmas,50,0.20,40,AUD
+2024-12-16,4,Melbourne,330,100,400,30,0,1,christmas,50,0.20,40,AUD
+2024-12-23,5,Sydney,70,100,120,50,0,0,none,50,0.00,50,AUD
+2024-12-23,5,Melbourne,30,100,150,-20,20,0,none,50,0.00,50,AUD

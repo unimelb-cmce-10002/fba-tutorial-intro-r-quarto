@@ -1,0 +1,107 @@
+<!-- question-type: inclass -->
+### Exercise 10: Render Your Document
+
+Now render your Quarto document so that your work appears in a single report.
+
+**(a)** Click **Render** in your `.qmd` file.
+
+**(b)** Check that your rendered document includes:
+
+* your answers to the interpretation questions,
+* the code and output from your R exercises,
+* and your recommendation for David Jones.
+
+**(c)** If your document does not render, identify the error message and work with your group to fix it.
+
+**(d)** What is one advantage of having your analysis and your written interpretation in the same document?
+
+<!-- BEGIN PROFILE:r-teaching-guide -->
+
+::: {.content-visible when-profile="r-teaching-guide"}
+
+::: {.teaching-block}
+
+::: {.teaching-block-header}
+Teaching Note
+:::
+
+::: {.teaching-block-body}
+
+🎯 Learning Objective
+
+Students should:
+
+* Render a Quarto document successfully after editing code and text
+* Check that their analysis, output, and interpretation appear together in one place
+* Treat rendering as a final reproducibility check rather than a formatting step
+* Use error messages to begin diagnosing what went wrong when a document fails to render
+
+✅  **Core Concepts to Highlight**
+
+* Rendering: running the full document from top to bottom to produce an output file
+* Reproducibility: if the document renders cleanly, the workflow is more likely to be coherent and repeatable
+* Integrated communication: Quarto keeps code, results, and explanation together
+* Error diagnosis: the goal is not to panic, but to find the first useful error message and trace it back to the relevant chunk
+
+💬 **Suggested In-Class Prompts**
+
+“What is Render doing now that is different from just running one line in the Console?”
+
+“If the document renders successfully, what does that tell you about your workflow?”
+
+“If it fails, where should you look first?”
+
+“Why might a manager prefer one rendered report to a folder of separate files and screenshots?”
+
+📌 **Common Misunderstandings**
+
+* Thinking that saving the `.qmd` is the same as rendering it
+* Thinking that code run in the Console will automatically appear in the report
+* Ignoring the first useful error message and jumping to random fixes
+* Treating rendering as ‘just presentation’ rather than a check that the analysis can run from start to finish
+
+:::
+
+:::
+
+:::
+
+<!-- END PROFILE:r-teaching-guide -->
+
+<!-- BEGIN PROFILE:r-solutions -->
+
+::: {.content-visible when-profile="r-solutions" when-profile="r-teaching-guide"}
+
+::: {.solution-block}
+
+::: {.solution-block-header}
+Solution
+:::
+
+::: {.solution-block-body}
+
+A successful solution is a **rendered Quarto document** that includes:
+
+* the student’s written answers,
+* the code used in the R exercises,
+* the resulting output,
+* and the final recommendation for David Jones.
+
+If the document does **not** render, students should identify the first useful error message and fix the relevant issue. Common fixes include:
+
+* removing or changing `#| eval: false` when a chunk needs to run,
+* correcting a file path,
+* fixing a misspelled column name,
+* or correcting a syntax error in a code chunk.
+
+A good student answer to (d) would be something like:
+
+> Having analysis and interpretation in the same document makes the work easier to check, share, and reproduce.
+
+:::
+
+:::
+
+:::
+
+<!-- END PROFILE:r-solutions -->

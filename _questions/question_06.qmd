@@ -1,9 +1,9 @@
 <!-- question-type: inclass -->
 ### Exercise 6: Loading and Inspecting Some Data
 
-(a) Open the Posit Cloud Workspace for this workshop.
+**(a)** Open the Posit Cloud Workspace for this workshop.
 
-(b) Load the dataset by running this line of code:
+**(b)** Load the dataset by running this line of code:
 
 ```{r}
 #| eval: false
@@ -22,7 +22,7 @@ inventory <- read_csv("data/inventory.csv")
 * Is `read_csv()` a function or a variable?
 * What does `"data/inventory.csv"` refer to?
 
-(d)  Run each of the following commands, and explain the output to your group:
+**(d)**  Run each of the following commands, and explain the output to your group:
 
 * `class(inventory)`
 * `names(inventory)`

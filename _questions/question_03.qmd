@@ -81,11 +81,7 @@ Solution
 
 ::: {.solution-block-body}
 
-Here’s the explanation and code:
-
-```{r}
-print("Hello, world!")
-```
+No solution. Success is logging in and rendering the document.
 :::
 
 :::

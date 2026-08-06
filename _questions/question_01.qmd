@@ -73,7 +73,7 @@ Solution
 
 ::: {.solution-block-body}
 
-(a)
+**(a)**
 Inventory Management is the process of planning, tracking, and controlling stock so that a business can meet customer demand without holding excess or running out.
 
 For David Jones, the challenge stems from when **demand for gift hampers can spike quickly** — poor planning could mean lost sales, unhappy customers, or leftover stock that must be heavily discounted.
@@ -97,10 +97,10 @@ The inventory level at which a new order should be placed so stock arrives befor
 
 It accounts for delivery lead time + expected demand.
 
-(b)
+**(b)**
 One key challenge is balancing efficiency with flexibility. Many traditional inventory systems aim to minimise costs by keeping stock levels low (like with just-in-time models), but these systems struggle when there is uncertainty or sudden changes in demand. This makes businesses vulnerable to stockouts or delays when things don’t go as planned.
 
-(c)
+**(c)**
 David Jones experiences unpredictable demand spikes during the holiday season. If they rely on a rigid or overly efficient inventory rule, they risk running out of popular items like gift hampers or over-ordering and being left with excess stock. To avoid this, they need a more flexible approach that can adjust to regional sales trends, promotion effects, and delivery timing issues.
 :::
 

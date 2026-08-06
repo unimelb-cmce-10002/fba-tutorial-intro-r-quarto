@@ -120,9 +120,7 @@ Before we proceed, we need everyone working in the same environment. Complete th
 
 If everything is set up correctly, a new tab should appear in your browser with the rendered content.
 
-```{r}
-# Write your answer here
-```
+*Write your answer here*
 
 ### Exercise 4: R + Quarto Vocabulary Check (5 Quick Definitions)
 
@@ -130,13 +128,15 @@ Answer each in **one short sentence**.
 
 **(a)** What does `<-` do in R?
 
-**(b)** What is a **data frame** (and what does a row represent in our David Jones data)?
+**(b)** What is a **data frame**. What does a row represent in our David Jones data?
 
-**(c)** What is a **function** in R? Give one example.
+**(c)** What is a **function** in R? Explain using `read_csv()` as an example.
 
 **(d)** What is a **code chunk** in a Quarto `.qmd` file?
 
 **(e)** What does **Render** do in Quarto?
+
+**(f)** What is a **package** in R? Explain using `readr` as an example, including how to load the package into your R session. 
 
 *Write your answer here*
 
@@ -156,9 +156,9 @@ You will discuss these exercises in class with your peers in small groups and wi
 
 ### Exercise 6: Loading and Inspecting Some Data
 
-(a) Open the Posit Cloud Workspace for this workshop.
+**(a)** Open the Posit Cloud Workspace for this workshop.
 
-(b) Load the dataset by running this line of code:
+**(b)** Load the dataset by running this line of code:
 
 ```{r}
 #| eval: false
@@ -177,7 +177,7 @@ inventory <- read_csv("data/inventory.csv")
 * Is `read_csv()` a function or a variable?
 * What does `"data/inventory.csv"` refer to?
 
-(d)  Run each of the following commands, and explain the output to your group:
+**(d)**  Run each of the following commands, and explain the output to your group:
 
 * `class(inventory)`
 * `names(inventory)`
@@ -196,86 +196,63 @@ Let's compute two manager-relevant variables:
 
 ::: {.callout-tip}
 
-You will need to use the following R commands in this exercise:
+We will use the following R commands in this exercise:
 
 * column access with `$`
 * logical filtering with `==`
 * multiplication with (`*`)
-* `sum()` and `min()`
+* Summing rows of data with `sum()`
+* Finding matches with `any()`
 
 :::
 
-**(a)** Create a new column called `revenue` that equals `units_sold` times  `unit_price`.
+**(a)** Create a new column called `revenue` that equals `units_sold` times  `unit_price` by running the code below. Explain what the code is doing.
 
 ```{r}
 #| eval: false
 
 # Create revenue using simple arithmetic
-inventory$revenue <- YOUR_CODE_HERE
+inventory$revenue <- inventory$units_sold * inventory$unit_price
 ```
 
-**(b)** Compute total revenue for both Sydney and Melbourne
+**(b)** Run the code below to compute total revenue for both Sydney and Melbourne. Explain what step 1, step 2 and step 3 are doing.
 
 ```{r}
 #| eval: false
 
-# first filter the relevant rows of data
-syd <-  inventory$revenue[YOUR_CONDITION]  # Condition should be about region == Sydney 
-mel <-  YOUR_CODE_HERE[YOUR_CONDITION]     # Condition should be about region == Melbourne 
+# STEP 1: EXPLAIN WHAT IS HAPPENING
+syd_data <- inventory[inventory$region == "Sydney", ]
+mel_data <- inventory[inventory$region == "Melbourne", ]
 
-# Then compute total revenue
-rev_syd  <- sum( YOUR_CODE_HERE )
-rev_melb <- YOUR_CODE_HERE
+# STEP 2: EXPLAIN WHAT IS HAPPENING
+rev_syd  <- sum(syd_data$revenue)
+rev_melb <- sum(mel_data$revenue)
 
+# STEP 3: EXPLAIN WHAT IS HAPPENING
 rev_syd
 rev_melb
 ```
 
-**(c)** Compute total units sold for Sydney and Melbourne. 
-
-::: {.callout-warning}
-
-Use the code from (b) as a template for this exercise. The steps you need to perform are very similar.
-
-:::
-
-```{r}
-#| eval: false
-
-YOUR_CODE_HERE
-
-sold_syd  <- sum( YOUR_CODE_HERE )
-sold_melb <- YOUR_CODE_HERE
-
-sold_syd
-sold_melb
-```
-
-**(d)** Find the minimum ending inventory for each region
-
-```{r}
-#| eval: false
-
-min_end_syd  <- YOUR_CODE_HERE
-min_end_melb <- YOUR_CODE_HERE
-
-min_end_syd
-min_end_melb
-```
-
-**(e)** A backorder occurs when `ending_inventory` is negative.
+**(c)** A backorder occurs when `ending_inventory` is negative.
 
 1. Does *any* row have `ending_inventory < 0`?
 2. If yes, display those rows.
 
+Run the code below and explain the steps.
+
 ```{r}
 #| eval: false
 
-any_backorders <- any(YOUR_CODE_HERE)  # Should use the ending_inventory column
-                                       # to check whether < 0 
+# STEP 1: EXPLAIN WHAT IS HAPPENING 
+any_backorders <- any(inventory$ending_inventory < 0)
+
+# STEP 2: EXPLAIN WHAT IS HAPPENING 
 any_backorders
 
-backorder_rows <- inventory[ YOUR_CODE_HERE , ]  # Use the same condition as above
+# STEP 3: EXPLAIN WHAT IS HAPPENING 
+backorder_rows <- inventory[inventory$ending_inventory < 0, ]
+
+# STEP 4: EXPLAIN WHAT IS HAPPENING 
 backorder_rows
 ```
 
@@ -301,13 +278,33 @@ Write them as two short bullet points (each should reference a KPI you computed)
 
 *Write your answer here*
 
-### Exercise 8: Planning for This Year's Holiday Season
+### Exercise 9: Planning for This Year's Holiday Season
 
 David Jones’ supplier is asking you to confirm delivery quantities **now**, so they can prepare for the season ahead.
 
-(a) How many units should you order for Sydney and Melbourne for the first week of the holiday season?
-(b) Justify your decision based on last year's patterns and your reasoning. Consider factors like demand trends, regional differences, price effects, and promotion timing.
-(c) Suppose the supplier has limited capacity and can only supply 200 units total for the first week.  How would you allocate this stock between Sydney and Melbourne? What are the risks of your choice?
+**(a)** How many units should you order for Sydney and Melbourne for the first week of the holiday season?
+
+**(b)** Justify your decision based on last year's patterns and your reasoning. Consider factors like demand trends, regional differences, price effects, and promotion timing.
+
+**(c)** Suppose the supplier has limited capacity and can only supply 200 units total for the first week.  How would you allocate this stock between Sydney and Melbourne? What are the risks of your choice?
+
+*Write your answer here*
+
+### Exercise 10: Render Your Document
+
+Now render your Quarto document so that your work appears in a single report.
+
+**(a)** Click **Render** in your `.qmd` file.
+
+**(b)** Check that your rendered document includes:
+
+* your answers to the interpretation questions,
+* the code and output from your R exercises,
+* and your recommendation for David Jones.
+
+**(c)** If your document does not render, identify the error message and work with your group to fix it.
+
+**(d)** What is one advantage of having your analysis and your written interpretation in the same document?
 
 *Write your answer here*
 
