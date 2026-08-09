@@ -42,3 +42,14 @@ You will discuss these exercises in class with your peers in small groups and wi
 {{< include _questions/question_09.qmd >}}
 
 {{< include _questions/question_10.qmd >}}
+
+
+<!-- BEGIN PROFILE:r-solutions -->
+<!-- BEGIN PROFILE:r-teaching-guide -->
+::: {.content-visible when-profile="r-solutions" when-profile="r-teaching-guide"}
+
+{{< include _summary/function_summary.qmd >}}
+
+:::
+<!-- END PROFILE:r-teaching-guide -->
+<!-- END PROFILE:r-solutions -->

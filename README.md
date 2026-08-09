@@ -119,7 +119,7 @@ This will:
 - Then run the student cleaner script:
 
 ```bash
-bash make_student.sh
+bash make_students.sh
 ```
 
 This generates `tutorial_student.qmd`, which includes:
