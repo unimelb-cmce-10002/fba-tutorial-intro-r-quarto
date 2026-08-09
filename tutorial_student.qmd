@@ -9,7 +9,7 @@ By the end of this tutorial, you should be able to:
 - Explain what **Quarto** is and why analysts use it
 - Run R code inside a `.qmd` file and **render** a report
 - Load a small dataset and compute a few **inventory KPIs**
-- Produce a simple table and a basic plot
+- Produce a simple table
 - Write a manager-friendly recommendation that separates **facts vs interpretation vs decision**
 :::
 
@@ -33,10 +33,6 @@ But with the holiday season approaching, this rigid approach might not be enough
 **Management wants a one-page briefing outlining whether they should adapt their restocking rule.**
 
 Your task is to review last year's data and advise David Jones on how to improve inventory decisions.
-
-## Prepare these Exercises before Class 
-
-Prepare these exercises before coming to class. Plan to spend 45 minutes on these exercises.
 
 ### Exercise 1: Approaches to Inventory Planning 
 
@@ -149,10 +145,6 @@ With your group answer the following questions:
 **(b)** What are the two biggest issues with the dataset presented in Exercise 2? Justify your choices.
 
 *Write your answer here*
-
-## In-Class Exercises
-
-You will discuss these exercises in class with your peers in small groups and with your tutor. These exercises build from the exercises you have prepared above, you will get the most value from the class if you have completed those above before coming to class.
 
 ### Exercise 6: Loading and Inspecting Some Data
 
