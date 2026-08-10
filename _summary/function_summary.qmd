@@ -5,7 +5,7 @@ This page collects every new R function you used in this tutorial, in one place,
 - **Package:** where the function comes from. Most functions you'll meet early on are **Base R** (built into R, no setup needed). Others live in packages that must be loaded first with `library()`.
 - **What it does:** a plain-English explanation, no jargon.
 - **Why you'd use it:** the everyday analyst reason you'd reach for it.
-- **Arguments:** the inputs you put inside the parentheses `()` to tell the function exactly what to work on. Some are required, some are optional.
+- **Arguments:** the inputs you put inside the parentheses `()` to tell the function exactly what to work on. Some are required, some are optional. Arguments listed here are not necessarily exhaustive.
 - **Example:** the function used on this week's `inventory` dataset.
 
 For more information on any function, use ?`function_name` in the R console (e.g. `?read_csv`) to see the official documentation, which includes a full list of arguments, descriptions, and often many examples.

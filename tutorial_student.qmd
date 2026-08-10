@@ -34,6 +34,10 @@ But with the holiday season approaching, this rigid approach might not be enough
 
 Your task is to review last year's data and advise David Jones on how to improve inventory decisions.
 
+## Prepare these Exercises before Class 
+
+Prepare these exercises before coming to class. Plan to spend 45 minutes on these exercises.
+
 ### Exercise 1: Approaches to Inventory Planning 
 
 Read the article, "[A New Approach to Production and Inventory Planning](https://hbr.org/2023/09/a-new-approach-to-production-and-inventory-planning)," and answer the following questions in  2–3 sentences:
@@ -145,6 +149,10 @@ With your group answer the following questions:
 **(b)** What are the two biggest issues with the dataset presented in Exercise 2? Justify your choices.
 
 *Write your answer here*
+
+## In-Class Exercises
+
+You will discuss these exercises in class with your peers in small groups and with your tutor. These exercises build from the exercises you have prepared above, you will get the most value from the class if you have completed those above before coming to class.
 
 ### Exercise 6: Loading and Inspecting Some Data
 
